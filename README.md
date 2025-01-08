@@ -4,6 +4,9 @@ blah blah blah ill write description later.
 
 ## installation instructions
 
+As always, clone and `cd` into the repo's directory first. Then follow the
+below instructions.
+
 ### agnostic way
 
 Ensure you have a [Rust toolchain](https://rustup.rs/) installed (Rust stable
