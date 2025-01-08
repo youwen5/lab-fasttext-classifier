@@ -1,3 +1,5 @@
+extern crate serde;
+
 use std::path::Path;
 
 use fasttext::{Args, FastText, ModelName};
@@ -15,9 +17,10 @@ pub fn train(out: &Path, dataset: &Path) -> Result<(), String> {
     ft_model.save_model(out.to_str().unwrap())
 }
 
-pub fn query(filename: &Path, query: &str) -> Vec<fasttext::Prediction> {
-    let mut text = FastText::new();
+pub fn tokenize_and_query(filename: &Path, query: &str) -> Vec<fasttext::Prediction> {
+    let mut ft_model = FastText::new();
+    let query_tokenized = crate::nlp::tokenize(query);
 
-    let _ = text.load_model(filename.to_str().unwrap());
-    text.predict(query, 3, 0.3).unwrap()
+    let _ = ft_model.load_model(filename.to_str().unwrap());
+    ft_model.predict(&query_tokenized, 3, 0.7).unwrap()
 }
