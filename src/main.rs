@@ -15,7 +15,10 @@ fn cli() {
             let model_path = args().nth(2).expect("no path to model given");
             let query = args().nth(3).expect("no query to run");
 
-            println!("{:?}", model::query(Path::new(&model_path), &query));
+            println!(
+                "{:?}",
+                model::tokenize_and_query(Path::new(&model_path), &query)
+            );
         }
         "train" => {
             let out_path = args().nth(2).expect("no path to model given");
