@@ -1,0 +1,376 @@
+<Article>
+Generate a large dataset of labeled sentences for training a FastText model to classify two intents: lab_guide_question and virtual_lab_manipulation. Each labeled sentence should represent one of these intents and must vary in structure, vocabulary, and style to ensure robustness in the training data. Follow these guidelines for each intent type:
+
+### **1. lab_guide_question (50%)**
+These sentences should reflect questions typically asked by students about lab guides, scientific concepts, or theoretical aspects of an experiment. Include various phrasings, question structures, and scientific terminology. Example topics include:
+- Chemical properties (e.g., mass of mercury, atomic behavior)
+- Experimental concepts (e.g., inelastic collisions, reaction times)
+- Requirements for lab conditions (e.g., temperature settings, pressure levels)
+
+Examples:
+- "What is the atomic weight of mercury?"
+- "Why do mercury atoms show inelastic collisions?"
+- "What temperature should the reaction vessel be?"
+
+### **2. virtual_lab_manipulation (50%)**
+These sentences should reflect actions or commands that users might give when interacting with a virtual lab simulation. Focus on practical tasks like adjusting settings, observing measurements, or controlling instruments. Vary the style between formal commands and casual inquiries.
+
+Examples:
+- "Set the oven to 300 degrees."
+- "Check the temperature of the furnace."
+- "Increase the reaction chamber's pressure."
+- "Find the VVR measurement."
+
+### **Instructions:**
+1. Ensure that each intent is clearly distinguishable by context and phrasing.
+2. Include a wide range of variations for each example (e.g., formal vs. informal, direct vs. indirect questions).
+3. Avoid using overly repetitive phrases; maintain natural language diversity.
+4. Label each sentence with the appropriate intent in the format: __label__intent sentence.
+
+Example Outputs:
+
+__label__lab_guide_question What is the mass of mercury?
+__label__virtual_lab_manipulation Find the temperature setting for the oven.
+__label__lab_guide_question Why do we observe inelastic collisions in mercury atoms?
+__label__virtual_lab_manipulation Check the VVR display.
+
+
+
+You should generate NOTHING ELSE except the sample data in the example format!
+
+---
+ilg.physics.ucsb.edu
+UCSB Physics
+Website and Manuals designed by Kelly Ann Pawlak, UCSB ILG (c) 2020
+25–31 minutes
+
+The Franck-Hertz Experiment
+Part I: Introduction
+
+When quantum mechanics was first proposed, some physicists wondered if it wasn't just a "trick of the light" because all the phenomena that required quantization for their explanation (i.e., atomic spectra and the photoelectric effect) involved light. That changed when James Franck and Gustav Hertz provided evidence for quantum mechanics that did not involve light. In this lab you will carry out a modern version of the Nobel-prize winning Franck-Hertz experiment.
+Part II: Background
+History
+
+In 1911, James Franck was a 29-year old professor of Physics. Gustav Hertz was a 24-year old gradaute student. Franck and Hertz didn't set out to validate quantum theory. They conceived their experiment well before Niels Bohr proposed his model of the atom. Their goal was to better understand electron conductivity through gases. But by the time they built their experiment, collected their data and reported their results, it was 1914. The Bohr model of the atom was about one year old.
+
+The Franck-Hertz data offered unequivocal evidence that atoms can accept energy only in discrete (i.e., quantized) amounts. It was crucial to the acceptance of quantum theory because, at that time, photons were still somewhat mysterious but electrons were unquestionably real particles whose kinetic energy could be readily determined.
+
+This first-hand account of the historical context surrounding the Franck-Hertz experiment from Gustav Hertz himself is in German, but you can display English subtitles:
+Theory
+
+The Franck-Hertz experiment generates free electrons by heating a cathode inside an evacuated tube (i.e., a vacuum tube). The newly freed electrons accelerate towards an anode because a voltage difference, Va, is imposed between the anode and the cathode. As they move from cathode to anode, the electrons gain kinetic energy eVa, unless they run into something along the way and undergo an inelastic collision.
+
+"But what could the electrons run into?" you ask, "Didn't you just say they are in an evacuated tube?"
+
+Yes, the tube is evacuated, but it is not empty. There is a a small amount of mercury in the tube. Mercury is a liquid at room temperature and pressure. Under vacuum and with a little heat, it becomes a gas. When the tube is heated (in an oven), a low pressure gas of mercury atoms occupies the region between the cathode and anode. So the moving electrons can collide with, and scatter off of, the mercury atoms.
+
+Because the mass of a mercury atom (3×10−22g) is hundreds of thousands of times greater than the mass of an electron (9×10−28g), and because the kinetic energy of a mercury atom at 200∘C (∼0.04 eV) is much, much less than that of an electron that has traveled only a fraction of a millimeter toward the anode, if the two undergo an elastic collision, the electron's kinetic energy will barely change.
+
+If they undergo an inelastic collision, however, the electron could come away with much less kinetic energy.
+
+If Hg atoms could absorb an arbitrary amount of energy, electrons that collide with them would lose energy no matter what the value of Va. But, if Hg atoms can only absorb discrete energies from the electrons, the electrons that collide with them will only lose energy if they have kinetic energy greater than or equal to the smallest amount of energy that the mercury atom can absorb.
+
+The Franck-Hertz experiment involves changing Va and measuring the kinetic energy of the electrons that reach the anode.
+
+In theory, a sudden drop should occur when eVa becomes equal to the smallest amount of energy that a mercury atom can accept, an amount known as "the first excitation energy" of mercury. Let's call the accelerating voltage that satisfies this condition V1. When Va=V1, electrons will only have enough energy to excite mercury once they reach the anode. As Va is increased above V1, electrons will be able to excite mercury further from the anode and so continue to accelerate towards the anode after a collision. When Va>2eV1, it becomes possible for an electron to undergo two inelastic collisions, and again be left with little energy when it reaches the anode. This continues as the voltage is increased further: the average kinetic energy of electrons at the anode drops each time Va exceeds an integer multiple of mercury's first excitation energy.] But, you ask,what if V1<V2<2V1? Couldn't electrons lose eV2 instead of eV1? Yes, in principle. But the electrons are colliding with mercury atoms very frequently. Unless V2≈V1, it is very unlikely that they will manage to reach an energy of eV2 before undergoing an inelastic collision and losing eV1.
+
+There are two complications in the actual experiment. First, it is not easy, or necessary, to directly measure the final kinetic energy of the electrons. It is simpler, and sufficient, to measure how many electrons are above some kinetic energy threshold. This can be done by using a wire mesh for the anode, so the electrons can pass through it, and then placing a third electrode beyond it. If the voltage difference between the anode and the third electrode is negative, the electrons will slow down as they approach it (they will be attracted back toward the anode). We call this voltage difference a retarding voltage, Vr. Only electrons with kinetic energy greater than e(Va−Vr) will reach the third electrode.
+
+Where do the other electrons go?
+
+Measuring the current collected by the third electrode tells us how many electrons have sufficient kinetic energy to reach it. If any electrons lose kinetic energy as they travel from the cathode to the anode, there will be a drop in the current through the "collection electrode".
+
+The second complication is that the electrons don't have exactly zero kinetic energy or even zero potential energy when they leave the cathode. There are small offsets due to the contact potential of the electrodes (the thermionic emission of electrons from the cathode requires a small amount of energy, similar to the work function of the metal that you encountered in measurements of the photoelectric effect.) As a result, the value of Va when the first current drop occurs is not a good measure of V1. However, measuring the difference in voltage between subsequent current drops removes the bias and can be used to determine V1.
+Part III: Instruments
+Vacuum Tube
+
+The apparatus used in this lab consists of a vacuum tube containing (see Figure 1)
+
+    a filament cathode that gets so hot when a current passes through it that it ejects electrons, a phenomenon known as thermionic emission.
+    a wire mesh anode that allows electrons to pass through it,
+    a collection electrode that receives only the most energetic electrons, and
+    a small amount of mercury (Hg) that transforms from liquid to vapor upon heating. Mercury vapor provides a dilute monoatomic gas for the free electrons to interact with.
+
+tube
+
+At left is a snapshot of the entire vacuum tube, as attached to the interior of the oven. Note the droplet of liquid Mercury that has condensed on the glass in the lower half of the tube, just right of center, near the written numeral '1'. At right is an annotated close-up of the key electrical elements.
+Oven
+
+oven The vacuum tube is mounted directly above the heating coils inside the oven
+
+largeVariac A VARIable AC source is just a large transformer with a variable number of windings.
+
+The vacuum tube is housed inside an oven (Figure 2) that is connected to a large variac (Figure 3). The oven consists of a metal casing with windows on two sides and feed-throughs for electrical connections on a third side. A thermometer (not shown) enters the oven from above.
+
+A large variac connects a resistive heating element in the bottom of the oven to the 120V AC wall power. The peak-to-peak AC voltage across the heating element is controlled by rotating the large, black knob, on top of the variac and can be read off the needle gauge on the front of the variac.
+Electronics
+
+A schematic of the tube and its direct electrical connections is shown in Figure 4
+
+Electrical Schematic The central oval represents the vacuum tube. The filament cathode is drawn as a pointed line at the bottom of the tube. The grid anode is represented as a thick, broken line in the upper half of the tube. The collection electrode is a thick, solid line slightly above the grid anode.
+
+A small variac provides power to heat the filament. Like the large variac, the small variac draws a variable amount of 120V AC wall power. However, instead of feeding current directly to the filament, the small variac's electrical connection goes through a second transformer. This way, the electrical potential of the filament can be determined by a different circuit.
+
+A pair of variable resistors – also known as a potentiometers or "pots" – provide adjustable voltages: one between the anode and the cathode to accelerate the electrons (Va). The other between the anode and the collection electrode to hold the collection electrode at a potential slightly below that of the anode (Vr). The latter retards electrons that pass through the anode, so that only the most energetic electrons are detected.
+
+Put a copy of the electrical schematic in your notes. Identify and label:
+
+    the filament
+    the anode
+    the cathode
+    the potentiometer that adjusts Va
+    the voltmeter that measures Va
+    the potentiometer that adjusts Vr
+    the voltmeter that measures Vr
+
+The retarding voltage is provided by a 1.5V D-cell battery (not visible). The accelerating voltage is provided by a DC power supply (Figure 5).
+
+DCpowerSupply
+
+This DC power supply has two channels, each capable of delivering 20 V. The channels can be operated independently or in "Tracking" mode, using the switch in the upper right corner. When in "Tracking" mode, a single knob, centered between the needle gauges that display the voltage (left) and current (right) being delivered, sets the output of both channels to the same value. By wiring the channel outputs in series (as shown in the photo) a maximum of 40 V can be supplied.
+
+Finally, the electrons that make it to the collection electrode are detected by a sensitive electrometer. This instrument can reliably detect mere fractions of a picoampere (1 pA = 10−12A).
+
+Keithley 6514
+
+Click here to access the electrometer user's manual in PDF format.
+
+The electrometer has ten ranges for current measurement, with the full scale values ranging from 20 pA to 20 mA.
+
+    When the range is set to 20 pA full-scale, how many digits after the decimal point are displayed?
+
+    How many electrons per second does a single unit in that smallest decimal place represent? (Recall that 1 Ampere = 1 Coulomb per second and 1 Coulomb =6.2×1018 elementary charges)
+
+Part IV: Remote Lab Instructions
+
+Using the instruments above, you will measure the potential difference between successive minima in the current that arrives at the collection eletrode as you vary the accerating voltage imposed between the anode and the cathode (as explained in the Background section).
+Overview
+
+The web-portal for this experiment enables you to press and turn all the same buttons and knobs as you would in person, and observe the effects of your actions through four different live video feeds, each aimed at the apparatus from a different vantage point. The video feed is displayed at the center of the portal. Controls for the switches, knobs, and buttons are distributed around the video feed, along with links to helpful information. A timer immediately above the video feed (in red) limits your time on the apparatus to three hours. When it runs out, the lab equipment will reset to its initial configuration.
+
+You can switch between different views of the apparatus by clicking on one of the four blue buttons immediately below the timer and above the display. As the display changes, so do the the images and controls that surround it.
+The Heat Camera
+
+The HEAT camera provides a top-down view of the large variac on the right, and of the oven on the left. On top of the oven is the readout dial of a thermometer that reports its internal temperature. Around the live feed you will find a power switch you can click to turn the oven on and off and a pair of green arrows you can click to turn the variac knob clockwise or counter-clockwise. The amount of rotation corresponding to a single click is determined by selecting one of the three radio buttons above the arrows.
+
+ScreenShotHEAT
+The Tube Camera
+
+The TUBE camera that looks inside the oven at the glass tube where the electron emissions and collisions will take place. It has a purplish color because it is an infra-red camera that illuminates the otherwise dark oven with a pair of infra-red lamps. Click on the Franck-Hertz tube icon on the left of live feed to look at the circuit diagram. Click on the tube photograph to the right of the live feed to see a close-up of the tube's components and their names.
+
+ScreenShotTUBE
+The Pots Camera and Potentiometers
+
+The POTS camera looks down on a yellow multimeter that measures Vr, on the right, and a control box, on the left. The control box has a switch and knob that control the filament variac, and, near the bottom of the screen, two potentiometers that control Va and Vr. Surrounding the live feed are: a switch for toggling power to the filament (upper left), arrows for turning the filament variac knob (upper right), arrows for turning the Va pot (lower left) and arrows for turning the Vr pot (lower right). For each set of arrows, there is a set of radio buttons that determine the angular increment of one click.
+
+ScreenShotPOTS
+
+How many full rotations are required to sweep the Va potentiometer through its entire range? How many full rotations are required to sweep the Vr potentiometer through its entire range?
+The Data Camera
+
+The DATA camera looks at the (yellow) multimeter that measures Va and the Keithley electrometer that measures current through the collection electrode. In the lower left you can also see the DC power supply (lower left), the back of the oven variac (upper left) and the bottom half of the side of the oven that has a window in it (upper middle). To the left of the video feed are the arrows for turning the Va pot. To the right are the arrows for turning the filament variac knob.
+
+ScreenShotDATA
+
+Below the video feed are images of the faceplates of the DC power supply (left) and the Keithley electrometer (right). The electrometer faceplate is actually a fully functioning interface! Clicking on a button in the image will cause the device to respond exactly as if you had pressed the that button in person.
+
+The Keithley 6514 electrometer is capable of measuring very small currents with great precision, but that precision requires some careful procedures. In particular, it is helpful to calibrate and correct for any offset currents. This can be done with the Zero Check and Zero Correct functions.
+
+When Zero Check is enabled, the input signal is shorted so that the input amplifier sees only offset currents and voltages that are not part of the input signal and thus should be subtracted. That subtraction can, and should, be done internally using the Zero Correct function, following the procedure below.
+
+    If you haven't already, select the current measuring mode by pressing I.
+
+    Select an appropriate measurement range.
+
+    Press ZCHK to enable Zero Check mode. You should see a "ZC" message appear to the right of the units on the display.
+
+    Press ZCOR to subtract the reading in Zero Check mode from future readings. You should see a "ZZ" message appear in the display.
+
+    Finally, press ZCHK a second time to disable the Zero Check mode. You should see a "CZ" message appear in the display to indicate that the readings are being corrected for any zero point offsets.
+
+    If you ever want to abandon the Zero Correct mode, for example, if you want to check whether it is dramatically affecting your measurement, just press ZCOR a second time.
+
+It is * essential * to repeat the zero correction procedure before making a measurement on a more sensitive scale than the last. The offset currents in the machine depend on the measurement scale. If you correct the offsets at a less sensitive scale and then move to a more sensitive scale without repeating the zero correction procedure, the readings on the more sensitive scale will likley be incorrect because too large of an offest is being subtracted.
+Part V: Measurement
+
+You will measure the potential difference between successive minima in the current that arrives at the collection eletrode as you vary the accerating voltage imposed between the anode and the cathode.
+Prepare the Instruments
+
+The first thing you'll want to do for this experiment is warm up the oven to raise the vapor pressure of the mercury (Hg) in the tube.
+
+    Go to the HEAT view.
+    Click the red switch to power up the oven variac. You should see the switch light up in the live feed.
+    Click the green arrows to turn the variac knob and thereby adjust the power to the oven.
+
+The target temperature is in the 170∘C – 190∘C range, which corresponds to a vapor pressure of Hg of ∼1 kPa. [3]
+
+    Set the knob to about “78” on the variac’s scale, to start.
+
+Note that the thermal response time is large. It may take 10 - 15 minutes to warm up, and adjusting the variac knob will not cause an immediate change. It is best to make small changes and monitor frequently.
+
+    As you work through the lab, monitor the oven temperature regularly and adjust accordingly.
+
+Next, you'll want to turn on all the other instruments, so they have time to warm up.
+
+Most equipment has a "warm up" period. This is simply the time it takes for all the heat production and dissipation mechanisms to come to equilibrium so that the device's components remain at a constant temperature. Variations in temperature can alter operational details of electronics, such as amplifier gains and leakage currents. The electrometer in particular has calibration circuitry that measures and corrects for most temperature dependent effects, but operating at a stable temperature still improves its precision.
+
+    Go to the DATA view and turn on the electrometer.
+
+The Keithley 6514 electrometer is central to your measurement, so you may be curious to understand its operation.
+
+    Click on the manual coverpage above electrometer control panel and skim the user manual's table of contents.
+
+You will notice that the electrometer can be used to measure voltage, current, resistance or charge. When powered on, it defaults to voltage measurement mode. For this lab, current measurement is the only relevant capability.
+
+    Switch to current mode using the front panel button.
+
+The electrometer has ten ranges for current measurement, with the full scale values ranging from 20 pA to 20 mA.
+
+When the range is set to 20 pA full-scale, how many digits after the decimal point are displayed?
+
+How many electrons per second does a single unit in that smallest decimal place represent?
+
+(Recall that 1 Ampere = 1 Coulomb per second and 1 Coulomb =6.2×1018 elementary charges)
+
+    Select an appropriate range for your measurements using the up and down arrows.
+    Set the RATE setting to SLOW
+    Set the DIGIT setting to display 2 or 3 digits after the decimal point.
+
+Displaying more digits provides greater precision, but temporal variations typically limit the usable level of precision.
+
+Once the oven temperature has stabilized at about 180∘C,
+
+    Go to the POTS view and set the retarding potential to 1.3 V.
+
+    Go to the DATA view and turn on the DC power supply by clicking the switch in the upper left hand corner of its faceplate. You should see the needle of the left gauge move to the right in the live feed.
+
+    Still in the DATA view, rotate the Va potentiometer clockwise until the Va meter reads ~40 V.
+
+    Go to the POTS view, make sure the knob on the filament variac is set to zero (fully counter-clockwise), and turn on the filament. You should see a light come on in the live feed.
+
+    Back in the DATA view, slowly increase the power to the filament by turning filament variac knob until you get a current reading on the electrometer that is between 0.75 and 1.0 nA. Try not to go much beyond 1.0 nA and, if you do, reduce the filament power to lower the current to just below 1.0 nA.
+
+As you reduce Va, the current you measure may exceed 1.0 nA, but the current you measure when Va=40 V shouldn't. If you exceed 1 nA before the filament variac knob has been turned more than about halfway, shut the filament off immediately and notify your TA. This could indicate that the filament is overheating.
+
+Now that everything is on and functioning, you can begin making measurements.
+Observe the Current
+
+Now that the temperature of the oven and the current from the filament have stabilized, and the accelerating voltage is at its maximum value (40 V), you are ready to start collecting data. First, take a "coarse" measurement to get a general sense for how the current changes as a function of the accelerating voltage. Don't bother waiting very long for the current to settle to a stable value at each voltage setting. Give it a few seconds and just jot its value down.
+
+    Set Va to the highest value and note the electrometer current, I.
+    Reduce Va by ~1 V. Note the value of Va and the value of I.
+    Repeat a few dozen times, until you reach Va=0 V.
+
+Make sure your data appears in a well-formatted table in your notes.
+
+    Plot I vs Va.
+
+It is NOT necessary to make a well-formatted plot at this stage. A "quick and dirty" plot is all that's is needed.
+
+    What are the most interesting/important features of the data in your plot?
+
+Now that you know roughly what the data will look like, take a "fine" measurement, gathering high resolution data (Va,I) in the most interesting regions as you increase Va back to 40 V.
+
+    Set Va to a value just below the first interesting feature and note the electrometer current, I.
+    Increase Va gradually, let the current stabilize, and note the value of I.
+    If you find you step past the feature of interest, it is ok to go back and collect more points.
+    Move to a Va value just below the next interesting feature and repeat.
+
+Make sure your data appears in a well-formatted table in your notes.
+
+    What features did you focus on and why?
+
+Make the Measurements
+
+    Plot I vs Va. Make this a well-formatted plot.
+
+    How many cycles of current peaks and minima did you see?
+
+Let Vnmax be the nth value of Va at which I goes through a maximum.
+Let Vnmin be the nth value of Va at which I goes through a minimum.
+
+    How will you extract values for the Vnmax and the Vnmin from your data?
+    What values did you get?
+
+Give your answer in a well-formatted table in your notes.
+
+Using the values of Vn you obtained in Activity 5, there are a few different ways you can calculate the first excitation energy of Mercury, E1Hg. You could:
+
+    fit a line to each series of Vn and report the average of their slopes, OR
+    calculate the differences Δ=(Vi−Vj)/(i−j) for all i,j≤n and i≠j and report the average difference, OR
+    come up with, and justify, another way.
+
+Keep in mind that the absolute voltage is biased by potential offsets so, instead of using the voltage values directly, you should use the differences between consecutive peaks or consecutive minima for your measurement.
+
+    What approach will you use to calculate E1Hg?
+
+Whatever your approach, you will end up with a measurement in Volts, which you will have to multiply by the elemental charge, e, to get an energy (in eV).
+
+    Calculate E1Hg based on your data. (Show your work.)
+
+    What value did you use for e?
+
+The quantum structure and energy levels of Mercury's lowest lying excited states are given in the following figure.
+
+HgExcitation
+
+The lowest energy levels of the Mercury atom, labeled in term symbol notation. The four lowest transitions energies are written in bold near their corresponding diagonal lines. The vertical down arrow indicates a radiative transition back to the ground state and is labeled with the wavelength of the corresponding photon.] Rapior, Sengstock and Baev, American Journal of Physics 74, 423 (2006).)
+
+    Predict E1,predictedHg based on the information given in Figure 11.
+    Explain your reasoning.
+
+    How large a fraction of the predicted value is the discrepancy between your measurement and the predicted value?
+
+    Calculate this proportionate discrepancy by taking the difference and dividing it by the accepted value:
+    ∣E1,measured−E1,accepted∣E1,accepted
+
+    Give your answer as a percentage.
+</Article>
+
+<Description>
+Generate a large dataset of labeled sentences for training a FastText model to classify two intents: lab_guide_question and virtual_lab_manipulation. Each labeled sentence should represent one of these intents and must vary in structure, vocabulary, and style to ensure robustness in the training data. Follow these guidelines for each intent type:
+
+### **1. lab_guide_question (50%)**
+These sentences should reflect questions typically asked by students about lab guides, scientific concepts, or theoretical aspects of an experiment. Include various phrasings, question structures, and scientific terminology. They should relate to ideas or objects mentioned in the topics mentioned in the above article.
+
+
+<Examples>
+- "What is the atomic weight of mercury?"
+- "Why do mercury atoms show inelastic collisions?"
+- "What temperature should the reaction vessel be?"
+</Examples>
+
+### **2. virtual_lab_manipulation (50%)**
+These sentences should reflect actions or commands that users might give when interacting with a virtual lab simulation. Focus on practical tasks like adjusting settings, observing measurements, or controlling instruments. Vary the style between formal commands and casual inquiries.
+
+<Examples>
+- "Set the oven to 300 degrees."
+- "Check the temperature of the furnace."
+- "Increase the reaction chamber's pressure."
+- "Find the VVR measurement."
+</Examples>
+
+</Description>
+
+<Instructions>
+1. Ensure that each intent is clearly distinguishable by context and phrasing.
+2. Include a wide range of variations for each example (e.g., formal vs. informal, direct vs. indirect questions, proper grammar vs improper slang).
+3. Avoid using overly repetitive phrases; maintain natural language diversity.
+4. Label each sentence with the appropriate intent in the format: __label__intent sentence.
+</Instructions>
+
+<ExampleOutput>
+
+__label__lab_guide_question What is the mass of mercury?
+__label__virtual_lab_manipulation Find the temperature setting for the oven.
+__label__lab_guide_question Why do we observe inelastic collisions in mercury atoms?
+__label__virtual_lab_manipulation Check the VVR display.
+__label__lab_guide_question how to find thermometer?
+__label__virtual_lab_manipulation go to oven controls
+
+</ExampleOutput>
+
+
+<Constraints>
+You should generate NOTHING ELSE except the sample data in the example format!
+</Constraints>

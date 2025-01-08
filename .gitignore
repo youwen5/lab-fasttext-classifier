@@ -4,3 +4,5 @@ model-out
 # Added by cargo
 
 /target
+
+result

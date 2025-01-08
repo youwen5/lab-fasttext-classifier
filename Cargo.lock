@@ -30,7 +30,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "fasttext-classifier"
+name = "lab-intent-classifier"
 version = "0.1.0"
 dependencies = [
  "fasttext",

@@ -1,10 +1,11 @@
+use std::env;
 use std::path::Path;
 
-use fasttext::{Args, FastText, LossName, ModelName};
+use fasttext::{Args, FastText, ModelName};
 
-fn train_cooking_model() -> Result<(), String> {
+fn train_model(out: &Path, dataset: &Path) -> Result<(), String> {
     let mut args = Args::new();
-    args.set_input("../data/cooking.train").unwrap();
+    args.set_input(dataset.to_str().unwrap()).unwrap();
     args.set_model(ModelName::SUP);
     args.set_lr(1.0);
     args.set_epoch(25);
@@ -12,19 +13,34 @@ fn train_cooking_model() -> Result<(), String> {
     let mut ft_model = FastText::new();
     ft_model.train(&args).unwrap();
 
-    ft_model.save_model("../model-out/out.bin")
+    ft_model.save_model(out.to_str().unwrap())
 }
 
-fn test_cooking_model(filename: &Path) -> Vec<fasttext::Prediction> {
+fn test_model(filename: &Path, query: &str) -> Vec<fasttext::Prediction> {
     let mut text = FastText::new();
 
     let _ = text.load_model(filename.to_str().unwrap());
-    text.predict("Safe temperatures to bake cookies at?", 3, 0.2)
-        .unwrap()
+    text.predict(query, 3, 0.3).unwrap()
+}
+
+fn cli() {
+    let pattern = env::args().nth(1).expect("no command given!");
+    match pattern.as_str() {
+        "test" => {
+            let model_path = env::args().nth(2).expect("no path to model given");
+            let query = env::args().nth(3).expect("no query to run");
+
+            println!("{:?}", test_model(Path::new(&model_path), &query));
+        }
+        "train" => {
+            let out_path = env::args().nth(2).expect("no path to model given");
+            let dataset_path = env::args().nth(3).expect("no path to dataset given");
+            train_model(Path::new(&out_path), Path::new(&dataset_path)).unwrap();
+        }
+        _ => panic!("subcommand does not exist"),
+    }
 }
 
 fn main() {
-    //train_cooking_model().unwrap();
-    let result = test_cooking_model(Path::new("../model-out/out.bin"));
-    println!("{:?}", result);
+    cli()
 }

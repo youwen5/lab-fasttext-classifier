@@ -1,5 +1,5 @@
 {
-  description = "Fasttext experiments";
+  description = "Classifying intent of UCSB physics queries";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
