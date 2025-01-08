@@ -21,8 +21,8 @@ fn cli() {
             );
         }
         "train" => {
-            let out_path = args().nth(2).expect("no path to model given");
-            let dataset_path = args().nth(3).expect("no path to dataset given");
+            let dataset_path = args().nth(2).expect("no path to dataset given");
+            let out_path = args().nth(3).expect("no path to model given");
             model::train(Path::new(&out_path), Path::new(&dataset_path)).unwrap();
         }
         "tokenize" => {
