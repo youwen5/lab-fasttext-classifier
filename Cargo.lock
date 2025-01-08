@@ -147,7 +147,6 @@ dependencies = [
  "rust-stemmers",
  "serde",
  "serde_derive",
- "stopwords",
  "vtext",
 ]
 
@@ -352,16 +351,6 @@ dependencies = [
  "ndarray",
  "num-complex",
  "num-traits 0.1.43",
-]
-
-[[package]]
-name = "stopwords"
-version = "0.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0e4508a6e132e6ea159112d42ed1f29927460dd45a118eed298d7666c81b713e"
-dependencies = [
- "lazy_static",
- "thiserror",
 ]
 
 [[package]]

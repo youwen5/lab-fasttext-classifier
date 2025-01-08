@@ -1,12 +1,10 @@
 use itertools::Itertools;
 use rust_stemmers::{Algorithm, Stemmer};
-use std::collections::HashSet;
-use stopwords::{Language, Spark, Stopwords};
 use vtext::tokenize::{Tokenizer, VTextTokenizer};
 
 pub fn tokenize(text: &str) -> String {
-    // convert all to lowercase
-    let lc_text = text.to_lowercase();
+    // convert all to lowercase and remove ? to prevent overfitting on questions
+    let lc_text = text.to_lowercase().replace("?", "");
 
     // tokenise the words
     let tok = VTextTokenizer::default();
@@ -18,14 +16,14 @@ pub fn tokenize(text: &str) -> String {
         .iter()
         .map(|x| en_stemmer.stem(x).into_owned())
         .collect();
-    let mut tokens: Vec<&str> = tokens.iter().map(|x| x.as_str()).collect();
+    let tokens: Vec<&str> = tokens.iter().map(|x| x.as_str()).collect();
 
     // remove the stopwords
-    let stops: HashSet<_> = Spark::stopwords(Language::English)
-        .unwrap()
-        .iter()
-        .collect();
-    tokens.retain(|s| !stops.contains(s));
+    //let stops: HashSet<_> = Spark::stopwords(Language::English)
+    //    .unwrap()
+    //    .iter()
+    //    .collect();
+    //tokens.retain(|s| !stops.contains(s));
 
     // join the tokens and return
     tokens.iter().join(" ")
