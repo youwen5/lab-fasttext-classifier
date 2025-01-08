@@ -31,10 +31,6 @@
         {
           default = craneLib.buildPackage {
             src = craneLib.cleanCargoSource ./.;
-
-            buildInputs = with pkgs; [
-              fasttext
-            ];
           };
         }
       );
