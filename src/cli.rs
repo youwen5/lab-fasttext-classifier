@@ -39,7 +39,7 @@ subcommands:
 
 example usage:
     lab-intent-classifier train ./data/tokenized.txt ./model.bin
-    lab-intent-classifier tokenize ./data/dataset.csv ./data/tokenized_new.txt
+    lab-intent-classifier process ./data/dataset.csv ./data/tokenized_new.txt
     lab-intent-classifier predict ./model.bin "where is the thermometer?"
     lab-intent-classifier split-csv ./data/dataset.csv ./data/dataset.train.csv ./data/dataset.valid.csv
     lab-intent-classifier benchmark ./model.bin ./data/dataset.valid.csv
