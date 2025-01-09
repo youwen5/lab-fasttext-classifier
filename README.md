@@ -1,6 +1,7 @@
 # lab fasttext classifier
 
-blah blah blah ill write description later.
+using fasttext to figure out if a user is asking a question or issuing a
+manipulation directive, in the context of a physics lab.
 
 ## installation instructions
 
@@ -23,22 +24,43 @@ nix run "nixpkgs#nix-output-monitor" -- shell
 
 ## running
 
-First you need to train a model from the datasets in [./data](./data).
-Once you have followed the above instructions to install the program, run
+First you need to train a model from the datasets in [./data](./data). Once you
+have followed the above instructions to install the program, run the help
+command for more instructions:
 
 ```sh
-lab-intent-classifier train "<path-to-dataset>" "<path-to-output>"
+lab-intent-classifier help
 ```
 
-For instance, using the already tokenized and processed data in
-`./data/tokenized.txt`, you can train a model like so:
+## example usage
+
+First, let's split the dataset into a validation and training set.
 
 ```sh
-lab-intent-classifier train ./data/tokenized.txt ./model.bin
+lab-intent-classifier split-csv ./data/dataset.csv ./data/dataset.train.csv ./data/dataset.valid.csv
 ```
 
-Then, you can run a query on the model like this:
+Then, let's process the training CSV to prepare for training.
 
 ```sh
-lab-intent-classifier test ./model.bin "Where is the thermometer?"
+lab-intent-classifier process ./data/dataset.train.csv ./dataset.tokenized
+```
+
+Now, train the model and output it to `./model.bin`.
+
+```sh
+lab-intent-classifier train ./dataset.tokenized ./model.bin
+```
+
+Now let's test the model!
+
+```sh
+lab-intent-classifier predict ./model.bin "where is the thermometer?"
+```
+
+Optionally, let's run a benchmark with our validation data, using 6 parallel
+threads to speed it up.
+
+```sh
+lab-intent-classifier benchmark ./model.bin ./data/dataset.valid.csv 6
 ```
